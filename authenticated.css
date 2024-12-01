@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: blanchedalmond;
+    position: relative;
+}
+
+nav #logout-btn {
+    right: 5px;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 60vw;
+    height: 60vh;
+    justify-content: center;
+}
