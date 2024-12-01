@@ -5,11 +5,9 @@
 
 nav {
     background-color: blanchedalmond;
-    position: relative;
-}
-
-nav #logout-btn {
-    right: 5px;
+    display: flex;
+    justify-content: end;
+    padding: 10px;
 }
 
 .container {

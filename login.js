@@ -15,9 +15,7 @@ loginBtn.addEventListener("click", (e) => {
             if (user.email == inpEmail.value && user.passwd == inpPasswd.value) {
                 loginName = user.name;
                 isPresent = true;
-                const data = JSON.parse(localStorage.getItem("isLogin")) || [];
-                data.push({ name: loginName });
-                localStorage.setItem("isLogin", JSON.stringify(data));
+                localStorage.setItem("isLogin", JSON.stringify({ name: loginName }));
                 window.location.href = "authenticated.html";
             }
         });

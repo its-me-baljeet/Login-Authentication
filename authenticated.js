@@ -5,10 +5,8 @@ if (loginList) {
     headingName.textContent = loginList.name + " is Logged in!";
     localStorage.setItem("isLogin", JSON.stringify(loginList));
 }
-logoutBtn.addEventListener("click", () => {
-    const loginList = JSON.parse(localStorage.getItem("isLogin"));
-    delete loginList;
-    console.log(loginList)
-    localStorage.setItem("isLogin", JSON.stringify(loginList));
+logoutBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("isLogin");
     document.location.href = "index.html";
 });
