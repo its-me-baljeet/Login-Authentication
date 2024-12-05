@@ -12,16 +12,25 @@ inpEmail.addEventListener("input", () => {
 inpPasswd.addEventListener("input", () => {
     errorMsg.textContent = "";
 })
+async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
 loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const userList = JSON.parse(localStorage.getItem("users")) || [];
     console.log(userList)
     let isPresent = false;
     if (userList && userList.length > 0) {
-        userList.forEach(user => {
+        userList.forEach(async (user) => {
             if (user.email == inpEmail.value) {
                 isPresent = true;
-                if (user.passwd == inpPasswd.value) {
+                const hashedPassword = await hashPassword(inpPasswd.value.trim());
+                if (user.passwd == hashedPassword) {
                     loginName = user.name;
                     localStorage.setItem("isLogin", JSON.stringify({ name: loginName }));
                     window.location.href = "authenticated.html";

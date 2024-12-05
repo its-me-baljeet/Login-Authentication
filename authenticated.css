@@ -50,6 +50,25 @@ header button:hover {
     transform: scale(1.1);
 }
 
+.btn {
+
+    margin: 5px;
+
+    background-color: #00b894;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
 /* Main Container */
 .container {
     text-align: center;
